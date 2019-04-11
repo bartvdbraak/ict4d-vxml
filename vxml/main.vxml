@@ -1,55 +1,52 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1">
+<meta name="maintainer" content="hrach1998@gmail.com" />
+<meta name="speak_exceptions" content="true" />
+ <property name="inputmodes" value="dtmf"/>
   <form id="Main">
+	<block>
+	 <audio src="menu.wav"/>
+	</block>
     <field name="TypeOfAnimal" type="number">
-      <prompt>
-      	Welcome to ICT4d Vet Service.
-	Please select your animal type.
-	For Sheep press 1.
-	For Goat press 2.
-	For Skettle press 3.
-      </prompt>
-
+      
     <noinput>
       Sorry I didn't get that.
       For Sheep press 1.
       For Goat press 2. 
-      For Skettle press 3.     
+      For Cattle press 3.     
     </noinput>
     
     <nomatch>
       Sorry I didn't get that wrong input.
       For Sheep press 1.
       For Goat press 2. 
-      For Skettle press 3.    
+      For Cattle press 3.    
     </nomatch>
 
       <filled>
       	got it!
       <if cond="TypeOfAnimal == 1">
-         <prompt>You chose Sheep. 
-         </prompt>
-	<goto next="#SexOfSheep"/>
+	  You chose Sheep. 
+	<goto next="#SexS"/>
       <elseif cond="TypeOfAnimal == 2" />
          <prompt>You chose Goat.
          </prompt>
 	<goto next="#SexOfGoat"/>
       <elseif cond="TypeOfAnimal == 3" />
-	 <prompt>You chose Skettle.
+	 <prompt>You chose Cattle.
          </prompt>
-	<goto next="#SexOfSkettle"/>
+	<goto next="#SexOfCattle"/>
       <else/>
-	Non of the option was selected
+	Wrong answer
       </if>
       <clear/>
       </filled>
     </field>
   </form>
 
-   <form id="SexOfSheep">
+   <form id="SexS">
     <field name="SexOfAnimal" type="number">
       <prompt>
-        You chose Sheep.
 	Now can you specify the gender of your Sheep.
 	For Male press 1.
 	For Female press 2.
@@ -72,9 +69,15 @@
       <filled>
       got it!
       <if cond="SexOfAnimal == 1">
-        <goto next="#AgeOfSheep1"/>
-      <elseif cond="SexOfAnimal == 2" />
-        <goto next="#AgeOfSheep2"/>
+	<prompt>
+	You chose Male.
+      </prompt>
+        <goto next="#AgeS1"/>
+      <elseif cond="SexOfAnimal == 2"/>
+	<prompt>
+	You chose Female.
+      </prompt>
+        <goto next="#AgeS2"/>
       <else/>
 	You did not select one of the correct answers
       </if>
@@ -83,78 +86,46 @@
     </field>
   </form>
 
-   <form id="AgeOfSheep1">
-    <field name="SexOfAnimal" type="number">
+
+   <form id="AgeS1">
+    <field name="AgeOfAnimal" type="number">
       <prompt>
-        You chose Sheep.
-	Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.
+	Now can you specify the Age of your Male Sheep in months.
+	For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3.
       </prompt>
 
       <noinput>
         Sorry I didn't get that.
-        Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.   
+        Now can you specify the Age of your Male Sheep in months.  
       </noinput>
-
-      <nomatch>
-        Sorry I didn't get that wrong input.
-        Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.    
-      </nomatch>
-
+	
       <filled>
       got it!
-      <if cond="SexOfAnimal == 1">
-        <goto next="#AgeOfSheep1"/>
-      <elseif cond="SexOfAnimal == 2" />
-        <goto next="#AgeOfSheep2"/>
-      <else/>
-	You did not select one of the correct answers
-      </if>
-      <clear/>
-      </filled>
-    </field>
-  </form>
-
-   <form id="AgeOfSheep2">
-    <field name="SexOfAnimal" type="number">
-      <prompt>
-        You chose Sheep.
-	Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.
+      <if cond="AgeOfAnimal == 1">
+	<prompt>
+	You chose a Male Sheep of age 0 to 12 months.
+	<break time="1000"/>
+	Decision: Your Male Sheep of age 0 to 12 is pregnant. Keep your animal safe.
+	
       </prompt>
-
-      <noinput>
-        Sorry I didn't get that.
-        Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.   
-      </noinput>
-
-      <nomatch>
-        Sorry I didn't get that wrong input.
-        Now can you specify the gender of your Sheep.
-	For Male press 1.
-	For Female press 2.    
-      </nomatch>
-
-      <filled>
-      got it!
-      <if cond="SexOfAnimal == 1">
-        <goto next="#AgeOfSheep1"/>
-      <elseif cond="SexOfAnimal == 2" />
-        <goto next="#AgeOfSheep2"/>
-      <else/>
+	<goto next="#Main"/>
+      <elseif cond="AgeOfAnimal == 2"/>
+	<prompt>
+	 You chose a Male Sheep of age 12-36 months.
+        </prompt>
+	<elseif cond="AgeOfAnimal == 3"/>
+	<prompt>
+	 You chose a Male Sheep of age 36 and above months.
+        </prompt> 
+	<else/>
 	You did not select one of the correct answers
       </if>
       <clear/>
       </filled>
     </field>
   </form>
+
 
 </vxml>
