@@ -8,7 +8,7 @@
 	 <audio src="menu.wav"/>
 	</block>
     <field name="TypeOfAnimal" type="number">
-      
+
     <noinput>
       Sorry I didn't get that.
       For Sheep press 1.
@@ -32,11 +32,11 @@
       <elseif cond="TypeOfAnimal == 2" />
          <prompt>You chose Goat.
          </prompt>
-	<goto next="#SexOfGoat"/>
+	<goto next="#SexG"/>
       <elseif cond="TypeOfAnimal == 3" />
 	 <prompt>You chose Cattle.
          </prompt>
-	<goto next="#SexOfCattle"/>
+	<goto next="#SexC"/>
       <else/>
 	Wrong answer
       </if>
@@ -44,6 +44,8 @@
       </filled>
     </field>
   </form>
+
+<!-- Sheep -->
 
    <form id="SexS">
     <field name="SexOfAnimal" type="number">
@@ -123,22 +125,25 @@
 	Decision: Your Female Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
       </prompt>
+	<break time="5000"/>
 	<exit />
       <elseif cond="AgeOfAnimal == 2"/>
 	<prompt>
-	 You chose a Female Sheep of age 0 to 12 months.
+	 You chose a Female Sheep of age 12 to 36 months.
 	<break time="500"/>
-	Decision: Your Female Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	Decision: Your Female Sheep of age 12 to 36 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
         </prompt>
+	<break time="5000"/>
 	<exit />
 	<elseif cond="AgeOfAnimal == 3"/>
 	<prompt>
-	 You chose a Female Sheep of age 0 to 12 months.
+	 You chose a Female Sheep of age 36 and above months.
 	<break time="500"/>
-	Decision: Your Female Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	Decision: Your Female Sheep of age 36 and above is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
         </prompt>
+	<break time="5000"/>
 	<exit /> 
 	<elseif cond="AgeOfAnimal == 0" />
 	 <goto next="#SexS"/>
@@ -178,29 +183,382 @@
 	<prompt>
 	You chose a Male Sheep of age 0 to 12 months.
 	<break time="500"/>
-	Decision: Your Male Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	Decision: E. Coli Scours typically presents in 2-4 day old lambs which have diarrhea, produce excess saliva, and have a cold mouth when you insert your finger into it. It’s usually associated with a messy environment where your sheep are 
+	housed and poor sanitation in the barn.. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if, no. Press 9 To go to start.
 	Press 0 to go back one step.
       </prompt>
+	<break time="5000"/>
 	<exit />
       <elseif cond="AgeOfAnimal == 2"/>
 	<prompt>
-	 You chose a Male Sheep of age 0 to 12 months.
+	 You chose a Male Sheep of age 12 to 36 months.
 	<break time="500"/>
-	Decision: Your Male Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	Decision:  E. Coli Scours typically presents in 2-4 day old lambs which have diarrhea, produce excess saliva, and have a cold mouth when you insert your finger into it. It’s usually associated with a messy environment where your sheep are 
+	housed and poor sanitation in the barn.. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
         </prompt>
+	<break time="5000"/>
 	<exit />
 	<elseif cond="AgeOfAnimal == 3"/>
 	<prompt>
-	 You chose a Male Sheep of age 0 to 12 months.
+	 You chose a Male Sheep of age 36 and above months.
 	<break time="500"/>
-	Decision: Your Male Sheep of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	Decision:  E. Coli Scours typically presents in 2-4 day old lambs which have diarrhea, produce excess saliva, and have a cold mouth when you insert your finger into it. It’s usually associated with a messy environment where your sheep are 
+	housed and poor sanitation in the barn.. We are not veterinarians so we have no idea what else to say.
 	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
         </prompt>
+	<break time="5000"/>
 	<exit /> 
 	<elseif cond="AgeOfAnimal == 0" />
 	 <goto next="#SexS"/>
+	<elseif cond="AgeOfAnimal == 9" />
+	 <goto next="#Main"/>
+	<else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+<!-- Goat -->
+
+   <form id="SexG">
+    <field name="SexOfAnimal" type="number">
+      <prompt>
+	
+	Now can you specify the gender of your Goat.
+	For Female press 1.
+	For Male press 2.
+	For going back to start press 0.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        Now can you specify the gender of your Goat.
+	For Female press 1.
+	For Male press 2. 
+	For going back to start press 0.
+      </noinput>
+
+      <nomatch>
+        Sorry I didn't get that wrong input.
+        Now can you specify the gender of your Goat.
+	For Female press 1.
+	For Male press 2.
+	For going back to start press 0.  
+      </nomatch>
+
+      <filled>
+      got it!
+      <if cond="SexOfAnimal == 1">
+	<prompt>
+	You chose Female.
+      </prompt>
+        <goto next="#AgeG1"/>
+      <elseif cond="SexOfAnimal == 2"/>
+	<prompt>
+	You chose Male.
+      </prompt>
+        <goto next="#AgeG2"/>
+      <elseif cond="SexOfAnimal == 0" />
+	<goto next="#Main"/>
+      <else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+   <form id="AgeG1">
+    <field name="AgeOfAnimal" type="number">
+      <prompt>
+	Now can you specify the Age of your Female Goat in months.
+	For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3.
+	For going back one step press 0.
+	For going back to start press 9.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3. 
+	For going back one step press 0.
+	For going back to start press 9.
+      </noinput>
+	
+      <filled>
+      got it!
+      <if cond="AgeOfAnimal == 1">
+	<prompt>
+	You chose a Female Goat of age 0 to 12 months.
+	<break time="500"/>
+	Decision: Your Female Goat of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+      </prompt>
+	<break time="5000"/>
+	<exit />
+      <elseif cond="AgeOfAnimal == 2"/>
+	<prompt>
+	 You chose a Female Goat of age 12 to 36 months.
+	<break time="500"/>
+	Decision: Your Female Goat of age 12 to 36 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit />
+	<elseif cond="AgeOfAnimal == 3"/>
+	<prompt>
+	 You chose a Female Goat of age 36 and above months.
+	<break time="500"/>
+	Decision: Your Female Goat of age 36 and above is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit /> 
+
+	<elseif cond="AgeOfAnimal == 0" />
+	 <goto next="#SexG"/>
+	<elseif cond="AgeOfAnimal == 9" />
+	 <goto next="#Main"/>
+	<else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+   <form id="AgeG2">
+    <field name="AgeOfAnimal" type="number">
+      <prompt>
+	Now can you specify the Age of your Male Goat in months.
+	For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3.
+	For going back one step press 0.
+	For going back to start press 9.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3. 
+	For going back one step press 0.
+	For going back to start press 9.
+      </noinput>
+	
+      <filled>
+      got it!
+      <if cond="AgeOfAnimal == 1">
+	<prompt>
+	You chose a Male Goat of age 0 to 12 months.
+	<break time="500"/>
+	Decision: Pink Eye, keep infected away from rest of the herd, wash your hands after handling animal. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if, no. Press 9 To go to start.
+	Press 0 to go back one step.
+      </prompt>
+	<break time="5000"/>
+	<exit />
+      <elseif cond="AgeOfAnimal == 2"/>
+	<prompt>
+	 You chose a Male Goat of age 12 to 36 months.
+	<break time="500"/>
+	Decision: Pink Eye, keep infected away from rest of the herd, wash your hands after handling animal. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit />
+	<elseif cond="AgeOfAnimal == 3"/>
+	<prompt>
+	 You chose a Male Goat of age 36 and above months.
+	<break time="500"/>
+	Decision: Pink Eye, keep infected away from rest of the herd, wash your hands after handling animal. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+        </prompt>
+	<break time="5000"/>
+	<exit /> 
+	<elseif cond="AgeOfAnimal == 0" />
+	 <goto next="#SexG"/>
+	<elseif cond="AgeOfAnimal == 9" />
+	 <goto next="#Main"/>
+	<else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+<!-- Cattle -->
+
+   <form id="SexC">
+    <field name="SexOfAnimal" type="number">
+      <prompt>
+	
+	Now can you specify the gender of your Cattle.
+	For Female press 1.
+	For Male press 2.
+	For going back to start press 0.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        Now can you specify the gender of your Cattle.
+	For Female press 1.
+	For Male press 2. 
+	For going back to start press 0.
+      </noinput>
+
+      <nomatch>
+        Sorry I didn't get that wrong input.
+        Now can you specify the gender of your Cattle.
+	For Female press 1.
+	For Male press 2.
+	For going back to start press 0.  
+      </nomatch>
+
+      <filled>
+      got it!
+      <if cond="SexOfAnimal == 1">
+	<prompt>
+	You chose Female.
+      </prompt>
+        <goto next="#AgeC1"/>
+      <elseif cond="SexOfAnimal == 2"/>
+	<prompt>
+	You chose Male.
+      </prompt>
+        <goto next="#AgeC2"/>
+      <elseif cond="SexOfAnimal == 0" />
+	<goto next="#Main"/>
+      <else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+   <form id="AgeC1">
+    <field name="AgeOfAnimal" type="number">
+      <prompt>
+	Now can you specify the Age of your Female Cattle in months.
+	For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3.
+	For going back one step press 0.
+	For going back to start press 9.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3. 
+	For going back one step press 0.
+	For going back to start press 9.
+      </noinput>
+	
+      <filled>
+      got it!
+      <if cond="AgeOfAnimal == 1">
+	<prompt>
+	You chose a Female Cattle of age 0 to 12 months.
+	<break time="500"/>
+	Decision: Your Female Cattle of age 0 to 12 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit />
+      <elseif cond="AgeOfAnimal == 2"/>
+	<prompt>
+	 You chose a Female Cattle of age 12 to 36 months.
+	<break time="500"/>
+	Decision: Your Female Cattle of age 12 to 36 is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit />
+	<elseif cond="AgeOfAnimal == 3"/>
+	<prompt>
+	 You chose a Female Cattle of age 36 and above months.
+	<break time="500"/>
+	Decision: Your Female Cattle of age 36 and above is pregnant. Keep your animal safe. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.	
+	</prompt>
+	<break time="5000"/>	
+	<exit /> 
+	<elseif cond="AgeOfAnimal == 0" />
+	 <goto next="#SexC"/>
+	<elseif cond="AgeOfAnimal == 9" />
+	 <goto next="#Main"/>
+	<else/>
+	You did not select one of the correct answers
+      </if>
+      <clear/>
+      </filled>
+    </field>
+  </form>
+
+   <form id="AgeC2">
+    <field name="AgeOfAnimal" type="number">
+      <prompt>
+	Now can you specify the Age of your Male Cattle in months.
+	For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3.
+	For going back one step press 0.
+	For going back to start press 9.
+      </prompt>
+
+      <noinput>
+        Sorry I didn't get that.
+        For age of 0 to 12 press 1.
+	For age of 12 to 36 press 2.
+	For age of 36 and above press 3. 
+	For going back one step press 0.
+	For going back to start press 9.
+      </noinput>
+	
+      <filled>
+      got it!
+      <if cond="AgeOfAnimal == 1">
+	<prompt>
+	You chose a Male Cattle  of age 0 to 12 months.
+	<break time="500"/>
+	Decision: Anaplasmosis, this disease is prevented by vaccination, be careful with the needles to prevent infecting other cattle. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if, no. Press 9 To go to start.
+	Press 0 to go back one step.
+      </prompt>
+	<break time="5000"/>
+	<exit />
+      <elseif cond="AgeOfAnimal == 2"/>
+	<prompt>
+	 You chose a Male Cattle of age 12 to 36 months.
+	<break time="500"/>
+	Decision: Anaplasmosis, this disease is prevented by vaccination, be careful with the needles to prevent infecting other cattle. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit />
+	<elseif cond="AgeOfAnimal == 3"/>
+	<prompt>
+	 You chose a Male Cattle of age 36 and above months.
+	<break time="500"/>
+	Decision: Anaplasmosis, this disease is prevented by vaccination, be careful with the needles to prevent infecting other cattle. We are not veterinarians so we have no idea what else to say.
+	If This answered your question then proceed if no press 9 to go to start or 0 to go back one step.
+	</prompt>
+	<break time="5000"/>
+	<exit /> 
+	<elseif cond="AgeOfAnimal == 0" />
+	 <goto next="#SexC"/>
 	<elseif cond="AgeOfAnimal == 9" />
 	 <goto next="#Main"/>
 	<else/>
