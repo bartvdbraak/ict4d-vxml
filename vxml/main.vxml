@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1">
-	<meta name="maintainer" content="hrach1998@gmail.com" />
+	<meta name="maintainer" content="" />
 	<meta name="speak_exceptions" content="true" />
 	<property name="inputmodes" value="dtmf"/>
 	<form id="Main">
